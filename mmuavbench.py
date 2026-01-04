@@ -19,9 +19,9 @@ class MMUAVBench_Image(ImageBaseDataset):
         'Planning': ["Air_Ground_Collaborative_Planning", "Swarm_Collaborative_Planning"]
     }
 
-    def __init__(self, dataset='UAVBench_Image'):
-        ROOT = LMUDataRoot()
-        self.task_root = osp.join(ROOT, 'tasks')
+    def __init__(self, dataset='MMUAVBench_Image'):
+        self.ROOT = LMUDataRoot()
+        self.task_root = osp.join(self.ROOT, 'tasks')
         self.dataset_name = dataset
         data = self.load_data(dataset)
         data['index'] = [str(x) for x in data['index']]
@@ -46,7 +46,7 @@ class MMUAVBench_Image(ImageBaseDataset):
         self.post_build(dataset)
     @classmethod
     def supported_datasets(cls):
-        return ['UAVBench_Image']
+        return ['MMUAVBench_Image']
     
     def load_data(self, dataset):
         data = {
@@ -62,8 +62,8 @@ class MMUAVBench_Image(ImageBaseDataset):
         global_id = 0 
         for _, task_list in self.DATASET.items():
             for task in task_list:
-                task_qa = json.load(open(osp.join(self.task_root, task, ".json"), 'r', encoding='utf-8'))
-                for qa in task_qa
+                task_qa = json.load(open(osp.join(self.task_root, f"{task}.json"), 'r', encoding='utf-8'))
+                for qa in task_qa:
                     data['index'].append(str(global_id))
                     global_id = global_id + 1
                     data['question_id'].append(qa["question_id"])
@@ -172,8 +172,8 @@ class MMUAVBench_Video(VideoBaseDataset):
     DATASET = {
         'Cognition': ["Event_Prediction", "Event_Tracing", "Event_Understanding"]
     }
-    def __init__(self, dataset='UAVBench_Video', pack=False, nframe=0, fps=3.0):
-        ROOT = LMUDataRoot()
+    def __init__(self, dataset='MMUAVBench_Video', pack=False, nframe=0, fps=3.0):
+        self.ROOT = LMUDataRoot()
         self.dataset_name = dataset
         data = self.load_data(dataset)
         self.data = data
@@ -183,7 +183,7 @@ class MMUAVBench_Video(VideoBaseDataset):
         self.frame_tmpl_fps = 'frame-{}-of-{}-{}fps.jpg'
     @classmethod
     def supported_datasets(cls):
-        return ['UAVBench_Video']
+        return ['MMUAVBench_Video']
     
     def load_data(self, dataset):
         data = {
@@ -200,7 +200,7 @@ class MMUAVBench_Video(VideoBaseDataset):
         global_id = 0 
         for _, task_list in self.DATASET.items():
             for task in task_list:
-                task_qa = json.load(open(osp.join(self.task_root, task, ".json"), 'r', encoding='utf-8'))
+                task_qa = json.load(open(osp.join(self.task_root, f"{task}.json"), 'r', encoding='utf-8'))
                 for qa in task_qa:
                     data['index'].append(global_id) 
                     global_id = global_id + 1
