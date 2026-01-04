@@ -16,7 +16,9 @@ from PIL import Image, ImageDraw, ImageFont
 class MMUAVBench_Image(ImageBaseDataset):
     TYPE = 'MCQ'
     DATASET = {
-        'Planning': ["Air_Ground_Collaborative_Planning", "Swarm_Collaborative_Planning"]
+        'Perception': ["Scene_Classification", "Orientation_Classification", "Environment_State_Classification", "Urban_OCR", "Class_Agnostic_Counting", "Referring_Expression_Counting"],
+        'Cognition': ["Target_Backtracking", "Cross_Object_Reasoning", "Intent_Analysis_and_Prediction", "Scene_Attribute_Understanding", "Scene_Damage_Assessment", "Scene_Analysis_and_Prediction", "Temporal_Ordering"],
+        'Planning': ["Ground_Target_Planning", "Air_Ground_Collaborative_Planning", "Swarm_Collaborative_Planning"]
     }
 
     def __init__(self, dataset='MMUAVBench_Image'):
