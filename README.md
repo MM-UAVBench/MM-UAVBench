@@ -34,7 +34,7 @@ VIDEO_DATASET = [
 
 
 ### Step 3: Download Dataset
-Download the datase from [huggingface](https://huggingface.co/datasets/daisq/MM-UAVBench) and put it in `~/MM-UAVBench/data`. 
+Download the dataset from [huggingface](https://huggingface.co/datasets/daisq/MM-UAVBench) and put it in `~/MM-UAVBench/data`. 
 
 Set the dataset path in `~/MM-UAVBench/VLMEvalKit/.env`：
 ```
@@ -43,7 +43,7 @@ LMUData="~/MM-UAVBench/data"
 ### Step 4: Run Evaluation
 Modify the model checkpoint path in `~/MM-UAVBench/VLMEvalKit/vlmeval/config.py` to your target model path.
 
-Execute the evaluation command:
+Run the evaluation command:
 ```bash
 python run.py \
     --data MMUAVBench_Image MMUAVBench_Video \
