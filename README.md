@@ -11,7 +11,7 @@
 </div>
 
 ## 🎉 News 
-- **[2026.01]** 📢 We released the dataset and evaluation code.
+- **[2026.01]** 📢 We released the dataset and corresponding evaluation code. Note that for tasks labeled with the data type "video_frames", only key frames are included in the current release; the full video clips will be released soon.
 - **[2025.12]** 🚀 We released the arXiv paper.
 
 ## Contents
